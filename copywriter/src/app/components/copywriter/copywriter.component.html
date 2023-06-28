@@ -1,0 +1,10 @@
+<div class="content" role="main">
+    <h1>Get your ad written fast</h1>
+    <form [formGroup]="copyForm" (ngSubmit)="onSubmit()">
+      <label for="description">Product Description:<br></label>
+      <input type="text" id="description" formControlName="description"><br>
+      <input type="submit">
+    </form>
+    <p>{{ad}}</p>
+</div>
+<router-outlet></router-outlet>
