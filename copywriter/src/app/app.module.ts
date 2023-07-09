@@ -14,6 +14,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+
 import { environment } from '../environments/environment';
 
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -36,8 +38,16 @@ import { CopywriterComponent } from './components/copywriter/copywriter.componen
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    RecaptchaV3Module,
   ],
-  providers: [WriterService, AuthService],
+  providers: [
+    WriterService, 
+    AuthService,
+    {
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useValue: environment.recaptcha.siteKey,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
